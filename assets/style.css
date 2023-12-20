@@ -21,7 +21,93 @@
     box-sizing: border-box
 }
 
-body,
+body {
+    margin: 0;
+    display: flex;
+    place-items: center;
+    min-width: 320px;
+    min-height: 100vh;
+  }
+  
+  .bouncing-blob {
+    width: 32vw;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    will-change: transform;
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    transform-origin: left top;
+  }
+  
+  .bouncing-blob--blue {
+    background: rgb(113, 29, 176);
+  }
+  
+  .bouncing-blob--white {
+    background: rgb(194, 18, 146);
+    z-index: 2;
+    width: 15vw;
+  }
+  
+  .bouncing-blob--purple {
+    background: rgb(239, 64, 64);
+  }
+  
+  .bouncing-blob--pink {
+    background: rgb(255, 167, 50);
+  }
+  
+  .bouncing-blobs-container {
+    position: fixed;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+  
+  .bouncing-blobs-glass {
+    position: absolute;
+    z-index: 2;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(140px);
+    -webkit-backdrop-filter: blur(140px);
+    pointer-events: none;
+  }
+  
+  .bouncing-blobs {
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  @media (max-width: 1200px) {
+    .bouncing-blobs-glass {
+      backdrop-filter: blur(120px);
+      -webkit-backdrop-filter: blur(120px);
+    }
+  }
+  
+  @media (max-width: 500px) {
+    .bouncing-blob {
+      width: 60vw;
+    }
+    .bouncing-blob--white {
+      width: 30vw;
+    }
+    .bouncing-blobs-glass {
+      backdrop-filter: blur(90px);
+      -webkit-backdrop-filter: blur(90px);
+    }
+}
 h1,
 h2,
 h3,
@@ -89,7 +175,7 @@ body {
     font-size: var(--fs-body);
     font-family: var(--ff-body);
     color: var(--clr-neutral-400);
-    background-color: #fff
+   
 }
 
 @media (min-width:50em) {
@@ -124,14 +210,14 @@ i {
 }
 
 .container {
-    background-color: var(--clr-neutral-100)
-}
-
-@media (min-width: 50em) {
-    .container {
-        padding: 1rem;
-        border-radius: 1rem
-    }
+    background: rgba(133, 133, 133, 0.2);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 25px;
+    padding: 30px;
+    width: min(1200px, 100%);
 }
 
 .even-columns {
@@ -150,10 +236,6 @@ i {
     }
 }
 
-ul li {
-    padding: -1rem 0;
-    line-height: 2
-}
 
 form {
     display: flex;
